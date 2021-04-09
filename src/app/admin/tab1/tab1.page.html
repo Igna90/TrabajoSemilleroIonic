@@ -1,17 +1,33 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>
-      Administrador
+      Listado de usuarios
     </ion-title>
+    <ion-button (click)="getUsers()">Obtener usuarios</ion-button>
+
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list *ngIf="users">
+    <ion-item *ngFor="let user of users">
+      <ion-label>Nombre
+        <h3>{{ user.name }}</h3>
+        <br>
+        Email
+        <h3>{{ user.email }}</h3>
+      </ion-label>
+      <ion-label>
+        Estado activación:
+        <h3 *ngIf="user.actived == 0">Desactivado</h3>
+        <h3 *ngIf="user.actived == 1">Activado</h3>
+        <br>
+        <ion-buttons>
+          <ion-button color="primary">Activar usuario</ion-button>
+        </ion-buttons>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

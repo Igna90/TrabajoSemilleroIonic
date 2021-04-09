@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ApiServicesService } from './../../services/api-services.service';
 
 @Component({
@@ -13,11 +12,12 @@ import { ApiServicesService } from './../../services/api-services.service';
 export class LoginPage implements OnInit {
   credentials: FormGroup;
   token: any;
-  constructor( private fb: FormBuilder,
-    private ApiServicesService: ApiServicesService,
+  constructor(
+    private fb: FormBuilder,
+    private apiServicesService: ApiServicesService,
     private alertController: AlertController,
-    private router: Router,
-    ) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.credentials = this.fb.group({
@@ -26,35 +26,29 @@ export class LoginPage implements OnInit {
     });
   }
   async login() {
-    this.ApiServicesService.login(this.credentials.value).then(
-      async (res) => {
-        this.token = res;
-        if(this.token.success) { 
-          const alert = await this.alertController.create({
-            header: 'Login correct',
-            message: this.token.message,
-            buttons: ['OK'],
-          });
-          await alert.present();
-          if(this.token.data.type === 'Admin'){
-            this.router.navigate(['/admin']);
-          }else{
-            this.router.navigate(['/client']);
-          }
+    this.apiServicesService.login(this.credentials.value).then(async (res) => {
+      this.token = res;
+      if (this.token.success) {
+        const alert = await this.alertController.create({
+          header: 'Login correct',
+          message: this.token.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+        if (this.token.data.type === 'Admin') {
+          this.router.navigate(['/admin']);
         } else {
-          const alert = await this.alertController.create({
-            header: 'Login failed',
-            message: this.token.message,
-            buttons: ['OK'],
-          });
-          await alert.present();
+          this.router.navigate(['/client']);
         }
-      } 
-      
-    );
-      
-    
-  
+      } else {
+        const alert = await this.alertController.create({
+          header: 'Login failed',
+          message: this.token.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+      }
+    });
   }
 
   get email() {
@@ -66,5 +60,4 @@ export class LoginPage implements OnInit {
   async gotoregister() {
     this.router.navigateByUrl('/register', { replaceUrl: true });
   }
-
 }
