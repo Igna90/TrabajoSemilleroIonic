@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
 import {  DatumOpinion } from '../../interfaces/interfaces';
 
 @Component({

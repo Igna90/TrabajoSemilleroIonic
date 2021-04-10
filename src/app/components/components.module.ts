@@ -16,7 +16,7 @@ import { OpinionComponent } from './opinion/opinion.component';
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
   ]
 })
 export class ComponentsModule { }

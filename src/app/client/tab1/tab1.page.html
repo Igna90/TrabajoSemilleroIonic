@@ -7,7 +7,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="secondary">
+  <div class="ion-padding">
+    <ion-item>
+      <ion-icon name="filter-outline"></ion-icon>
 
+      <ion-label class="ion-text-center">Plagas</ion-label>
+      <ion-select okText="Ok" cancelText="Cancelar" (ionChange)="onChange($event)">
+        <ion-select-option *ngFor="let plague of plagues" value="{{ plague.id }}">
+          {{ plague.name }}
+        </ion-select-option>
+        <ion-select-option  value="{{ -1 }}">
+            Mostrar todas
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
   <app-opiniones [opiniones]="opinions"></app-opiniones>
 
 </ion-content>

@@ -14,3 +14,14 @@ export interface DatumOpinion {
   created_at: string;
   updated_at: string;
 }
+export interface ResPlagues {
+  success: boolean;
+  data: DatumPlagues[];
+  message: string;
+}
+
+export interface DatumPlagues {
+  id: number;
+  name: string;
+  img?: any;
+}
