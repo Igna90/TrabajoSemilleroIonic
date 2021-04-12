@@ -2,11 +2,17 @@
   <ion-card-header>
     <ion-card-title>{{ opinion.headline }}</ion-card-title>
   </ion-card-header>
-
+<ion-card-subtitle> {{ opinion.created_at | date}}</ion-card-subtitle>
   <ion-card-content>
-    <p>
+   
       {{opinion.description}}
-    </p>
+   
   </ion-card-content>
+
+<ion-card-subtitle>
+  <div>
+  {{opinion.num_likes}} Likes!
+</div>
+</ion-card-subtitle>
 
 </ion-card>
