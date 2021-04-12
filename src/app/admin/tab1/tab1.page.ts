@@ -21,7 +21,6 @@ export class Tab1Page {
       (res: any) => {
         if (res.success) {
           this.users = res.data;
-          console.log(this.users);
         }
       },
       (error) => {

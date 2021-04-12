@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiServicesService } from './../../services/api-services.service';
 
@@ -14,11 +14,10 @@ export class RegisterPage implements OnInit {
   credentials: FormGroup;
   token: any;
   constructor(
-    private ApiServicesService: ApiServicesService,
+    private apiServicesService: ApiServicesService,
     private fb: FormBuilder,
     private router: Router,
     private alertController: AlertController,
-    private loadingController: LoadingController
   ) {}
 
   ngOnInit() {
@@ -30,7 +29,7 @@ export class RegisterPage implements OnInit {
     });
   }
   async doRegister() {
-    this.ApiServicesService.register(this.credentials.value).then(
+    this.apiServicesService.register(this.credentials.value).then(
       async (res) => {
         this.token = res;
         if (this.token.success) {
@@ -40,7 +39,7 @@ export class RegisterPage implements OnInit {
             buttons: ['OK'],
           });
           await alert.present();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
         } else {
           const alert = await this.alertController.create({
             header: 'Register failed',
