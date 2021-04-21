@@ -4,14 +4,19 @@ import { IonicModule } from '@ionic/angular';
 import { OpinionesComponent } from './opiniones/opiniones.component';
 import { OpinionComponent } from './opinion/opinion.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { PlagasComponent } from './plagas/plagas.component';
+import { PlagaComponent } from './plaga/plaga.component';
 
 @NgModule({
   declarations: [
     OpinionesComponent,
-    OpinionComponent
+    OpinionComponent,
+    PlagasComponent,
+    PlagaComponent
   ],
   exports: [
-    OpinionesComponent
+    OpinionesComponent,
+    PlagasComponent
   ],
   imports: [
     CommonModule,
