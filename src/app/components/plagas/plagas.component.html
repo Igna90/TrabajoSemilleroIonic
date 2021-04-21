@@ -1,9 +1,17 @@
+
+<ion-searchbar class="ion-padding"
+placeholder="Buscar plaga"
+inputmode="text"
+showCancelButton="focus"
+(ionChange)="onSearchChange( $event )"
+[debounce]="300"
+></ion-searchbar>
+
 <ion-grid fixed>
-  
   
   <ion-row>
 
-    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let plague of plagues">
+    <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let plague of plagues | filtroBusqueda:textoBusqueda">
 
       <app-plaga [plague]="plague"></app-plaga>
 
