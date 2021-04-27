@@ -80,7 +80,24 @@ export class ApiServicesService {
   getPlagues() {
     return new Promise((resolve) => {
       this.http
-        .get<ResPlagues>(this.apiUrl + 'plagues', {
+        .get<ResPlagues>(this.apiUrl + 'plagues')
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    });
+  }
+  createLike(id: number){
+    return new Promise((resolve) => {
+      this.http
+        .post<DatumOpinion>(this.apiUrl + 'like', {
+          opinion_id: id,
+          user_id: this.token.data.id
+        }, {
           headers: new HttpHeaders().set(
             'Authorization',
             'Bearer ' + this.token.data.token
@@ -96,4 +113,26 @@ export class ApiServicesService {
         );
     });
   }
+  // deleteLike(id: number){
+  //   return new Promise((resolve) => {
+  //     this.http
+  //       .post<DatumOpinion>(this.apiUrl + 'like', {
+  //         opinion_id: id,
+  //         user_id: this.token.data.id
+  //       }, {
+  //         headers: new HttpHeaders().set(
+  //           'Authorization',
+  //           'Bearer ' + this.token.data.token
+  //         ),
+  //       })
+  //       .subscribe(
+  //         (data) => {
+  //           resolve(data);
+  //         },
+  //         (err) => {
+  //           console.log(err);
+  //         }
+  //       );
+  //   });
+  // }
 }

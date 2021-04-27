@@ -4,10 +4,18 @@
     <ion-card-subtitle> {{ opinion.created_at | date }}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-      {{opinion.description}}
-      <div>
-        {{ opinion.num_likes | filtro }} 
-      </div>
+    {{opinion.description}}
+    <div>
+      {{ opinion.num_likes | filtro }}
+    </div>
+    <ion-buttons slot="end">
+      <ion-button  (click)="onClick( opinion.id )" color="danger">
+
+        <ion-icon slot="icon-only" [name]=" meGusta ? 'heart':'heart-outline' "></ion-icon>
+
+      </ion-button>
+
+    </ion-buttons>
   </ion-card-content>
 
 </ion-card>
