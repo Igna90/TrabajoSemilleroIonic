@@ -33,7 +33,7 @@ export class OpinionComponent implements OnInit {
         }
       );
     } else {
-      // this.apiServicesService.createLike(id).then(
+      // this.apiServicesService.deletelike(id).then(
       //   (res: any) => {
       //     if (res.success) {
       //       this.opinion.num_likes -= 1;
