@@ -6,17 +6,22 @@ import { OpinionComponent } from './opinion/opinion.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { PlagasComponent } from './plagas/plagas.component';
 import { PlagaComponent } from './plaga/plaga.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
     OpinionesComponent,
     OpinionComponent,
     PlagasComponent,
-    PlagaComponent
+    PlagaComponent,
+    ProductsComponent,
+    ProductComponent
   ],
   exports: [
     OpinionesComponent,
-    PlagasComponent
+    PlagasComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,

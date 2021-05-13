@@ -25,3 +25,16 @@ export interface DatumPlagues {
   name: string;
   img?: any;
 }
+export interface ResProducts {
+  success: boolean;
+  data: DatumProducts[];
+  message: string;
+}
+
+export interface DatumProducts {
+  id: number;
+  name: string;
+  img: string;
+  how_to_use: string;
+  created_at: string;
+}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DatumOpinion, ResPlagues } from '../interfaces/interfaces';
+import { DatumOpinion, ResPlagues, DatumProducts } from '../interfaces/interfaces';
 
 const TOKEN_KEY = 'my-token';
 @Injectable({
@@ -62,6 +62,25 @@ export class ApiServicesService {
     return new Promise((resolve) => {
       this.http
         .get<DatumOpinion>(this.apiUrl + 'opinions', {
+          headers: new HttpHeaders().set(
+            'Authorization',
+            'Bearer ' + this.token.data.token
+          ),
+        })
+        .subscribe(
+          (data) => {
+            resolve(data);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    });
+  }
+  getProducts() {
+    return new Promise((resolve) => {
+      this.http
+        .get<DatumProducts>(this.apiUrl + 'products', {
           headers: new HttpHeaders().set(
             'Authorization',
             'Bearer ' + this.token.data.token
