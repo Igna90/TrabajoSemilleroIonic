@@ -1,0 +1,20 @@
+<ion-header class="title">
+  <ion-toolbar color="tertiary">
+    <ion-title class="ion-padding-top">
+      {{name}}
+    </ion-title>
+    <div class="boton">
+      <ion-buttons class="ion-padding-end" >
+        <ion-icon size="large" (click)="closeModal()" name="close-circle"></ion-icon>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="warning">
+  <ion-card color="light">
+    <ion-card-content>
+      <ion-img [src]="img"></ion-img>
+      <ion-text>{{ how_to_use }}</ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

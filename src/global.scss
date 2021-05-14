@@ -25,3 +25,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.my-custom-class .modal-wrapper{
+    background: rgb(29, 8, 18);
+    height: 75%;
+    border-radius: 45px;
+  }

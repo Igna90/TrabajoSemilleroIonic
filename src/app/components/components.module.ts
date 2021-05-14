@@ -8,6 +8,7 @@ import { PlagasComponent } from './plagas/plagas.component';
 import { PlagaComponent } from './plaga/plaga.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
+import { MyModalComponent } from './my-modal/my-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,17 +17,13 @@ import { ProductComponent } from './product/product.component';
     PlagasComponent,
     PlagaComponent,
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    MyModalComponent,
   ],
-  exports: [
-    OpinionesComponent,
-    PlagasComponent,
-    ProductsComponent
-  ],
-  imports: [
-    CommonModule,
-    IonicModule,
-    PipesModule
-  ]
+
+  entryComponents: [MyModalComponent],
+
+  exports: [OpinionesComponent, PlagasComponent, ProductsComponent],
+  imports: [CommonModule, IonicModule, PipesModule],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}
